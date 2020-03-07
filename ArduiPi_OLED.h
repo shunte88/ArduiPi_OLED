@@ -189,6 +189,7 @@ class ArduiPi_OLED : public Adafruit_GFX
   void stopscroll(void);
 
   void drawPixel(int16_t x, int16_t y, uint16_t color);
+  bool readPixel(int16_t x, int16_t y);
 
   private:
   uint8_t *poledbuff; // Pointer to OLED data buffer in memory

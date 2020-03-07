@@ -168,7 +168,7 @@ void ArduiPi_OLED::drawPixel(int16_t x, int16_t y, uint16_t color)
 {
   uint8_t * p = poledbuff ;
   uint8_t c;
-  
+
   if ((x < 0) || (x >= width()) || (y < 0) || (y >= height()))
     return;
 
@@ -227,6 +227,7 @@ void ArduiPi_OLED::drawPixel(int16_t x, int16_t y, uint16_t color)
       *p &= ~_BV((y%8)); 
   }
 }
+
 
 // Display instantiation
 ArduiPi_OLED::ArduiPi_OLED() 
@@ -919,7 +920,7 @@ void ArduiPi_OLED::display(void)
 
     // Setup D/C to switch to data mode
     buff[0] = SSD_Data_Mode; 
-    
+
     if (oled_type == OLED_SH1106_I2C_128x64)
     {
       for (uint8_t k=0; k<8; k++) 
@@ -958,5 +959,19 @@ void ArduiPi_OLED::clearDisplay(void)
   memset(poledbuff, 0, oled_buff_size);
 }
 
+// readPixel - return true if pixel lit
+bool ArduiPi_OLED::readPixel(int16_t x, int16_t y)
+{
+
+  if ((x < 0) || (x >= width()) || (y < 0) || (y >= height()))
+    return false;
+
+  // not seeed compliant
+  uint8_t * p = poledbuff ;
+  p = poledbuff + (x + (y/8)*oled_width );
+
+  return (0 != _BV(y%8));
+
+}
 
 

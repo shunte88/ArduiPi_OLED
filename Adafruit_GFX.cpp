@@ -427,7 +427,7 @@ void Adafruit_GFX::fillTriangle ( int16_t x0, int16_t y0, int16_t x1, int16_t y1
     */
     if(a > b) 
 			swap(a,b);
-			
+
     drawFastHLine(a, y, b-a+1, color);
   }
 
@@ -528,12 +528,12 @@ void Adafruit_GFX::drawChar(int16_t x, int16_t y, unsigned char c, uint16_t colo
 			{
         if (size == 1) // default size
           drawPixel(x+i, y+j, bg);
-        else 
+        else
 				{  // big size
           fillRect(x+i*size, y+j*size, size, size, bg);
-        } 	
+        }
       }
-			
+
       line >>= 1;
     }
   }
@@ -587,3 +587,4 @@ int16_t Adafruit_GFX::height(void)
 { 
   return _height; 
 }
+
