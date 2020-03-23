@@ -8,6 +8,10 @@
 *.so
 *.so.*
 
+# sidecar files
+*.c*old
+*.hold
+*.old*
 
 # Executables
 ssd1306_demo

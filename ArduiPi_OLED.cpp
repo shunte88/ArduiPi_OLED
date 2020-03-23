@@ -969,8 +969,9 @@ bool ArduiPi_OLED::readPixel(int16_t x, int16_t y)
   // not seeed compliant
   uint8_t * p = poledbuff ;
   p = poledbuff + (x + (y/8)*oled_width );
+  return poledbuff[(x + (y/8)*width())] & (1 << (y&7));
 
-  return (0 != _BV(y%8));
+  //return (0 != _BV(y%8));
 
 }
 
